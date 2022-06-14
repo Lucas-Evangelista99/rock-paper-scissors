@@ -46,3 +46,39 @@ function playRound (playerSelection, computerSelection) {
 
     return result;
 };
+
+function game() {
+    console.log("Rock, Paper, Scissors! First to score 5 wins!");
+    let player = 0;
+    let computer = 0;
+    let rounds = 1;
+    
+    while (true) {
+        console.log("Round " + rounds.toString() + ":");
+        let roundResult = playRound(prompt("Rock, Paper or Scissors? Enter your play:"), computerPlay());
+        if (roundResult.includes("You Win!")) {
+            console.log(roundResult);
+            player ++;
+            rounds ++;
+        } else if (roundResult.includes("You Lose!")) {
+            console.log(roundResult);
+            computer ++;
+            rounds ++;
+        } else if (roundResult.includes("Tie!")) {
+            console.log(roundResult);
+            rounds ++;
+        }
+        console.log("player: " + player.toString() + " " + "X" + " " + "computer: " + computer.toString());
+        if (player == 5 || computer == 5) {
+            break;
+        }
+    }
+
+    if (player > computer) {
+        console.log("Congratulations! You Win!");
+    } else {
+        console.log("Too bad! You Lose!"); 
+    }
+}
+
+game();
