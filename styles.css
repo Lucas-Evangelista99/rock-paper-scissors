@@ -38,7 +38,13 @@ p {
     border-radius: 100px;
     padding: 50px;
     cursor: pointer;
+    box-shadow: 0 9px #999;
 }
+
+#options button:active {
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+  }
 
 .fa-hand-back-fist,
 .fa-hand,
