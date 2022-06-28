@@ -80,5 +80,3 @@ function game() {
         console.log("Too bad! You Lose!"); 
     }
 }
-
-game();
