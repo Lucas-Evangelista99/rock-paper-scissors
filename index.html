@@ -11,12 +11,24 @@
     <script src="script.js" defer></script>
 </head>
 <body>
-    <p class="title">Rock Paper Scissors<p>
+    <p id="title">Rock Paper Scissors<p>
     <p>Man vs Computer! First to score 5 points wins!</p>
+    <div id="score">
+        <div class="player">
+            <p>player</p>
+            <p>0</p>
+        </div>
+        <p class="x">X</p>
+        <div class="computer">
+            <p>computer</p>
+            <p>0</p>
+        </div>
+    </div>
     <div id="options">
         <button class="rock" type="button"><i class="fa-regular fa-hand-back-fist fa-10x"></i></button>
         <button class="paper" type="button"><i class="fa-regular fa-hand fa-10x"></i></button>
         <button class="scissors" type="button"><i class="fa-regular fa-hand-scissors fa-10x"></i></button>
     </div>
+    <p class="result">Choose an option</p>
 </body>
 </html>
