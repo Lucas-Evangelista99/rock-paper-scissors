@@ -25,9 +25,9 @@ p {
     gap: 30px;
 }
 
-.player p,
-.x,
-.computer p {
+#player p,
+#x,
+#computer p {
     font-size: 48px;
 }
 
@@ -67,6 +67,6 @@ p {
     background-color: #f7f7f7;
 }
 
-.result {
+#result {
     margin-top: -80px;
 }

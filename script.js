@@ -4,39 +4,37 @@ function computerPlay() {
     return randomPlay;
 };
 
-function playRound (playerSelection, computerSelection) {
-    let lower = playerSelection.toLowerCase();
-    const str = lower.charAt(0).toUpperCase() + lower.slice(1);
+function playRound(playerSelection, computerSelection) {
     let result = "";
     
-    if (str === "Rock") {
+    if (playerSelection === "Rock") {
         if (computerSelection === "Rock") {
            let strPlay = "Tie!";
            result += strPlay;
         } else if (computerSelection === "Paper") {
-            let strPlay = "You Lose!" + " " + computerSelection + " beats" + " " + str;
+            let strPlay = "You Lose!" + " " + computerSelection + " beats" + " " + playerSelection;
             result += strPlay;
         } else if (computerSelection === "Scissors") {
-            let strPlay = "You Win!" + " " + str + " beats" + " " + computerSelection;
+            let strPlay = "You Win!" + " " + playerSelection + " beats" + " " + computerSelection;
             result += strPlay;
         }
-    } else if (str === "Paper") {
+    } else if (playerSelection === "Paper") {
         if (computerSelection === "Rock") {
-            let strPlay = "You Win!" + " " + str + " beats" + " " + computerSelection;
+            let strPlay = "You Win!" + " " + playerSelection + " beats" + " " + computerSelection;
             result += strPlay;
         } else if (computerSelection === "Paper") {
             let strPlay = "Tie!";
             result += strPlay;
         } else if (computerSelection === "Scissors") {
-            let strPlay = "You Lose!" + " " + computerSelection + " beats" + " " + str;
+            let strPlay = "You Lose!" + " " + computerSelection + " beats" + " " + playerSelection;
             result += strPlay;
         }
-    } else if (str === "Scissors") {
+    } else if (playerSelection === "Scissors") {
         if (computerSelection === "Rock") {
-            let strPlay = "You Lose!" + " " + computerSelection + " beats" + " " + str;
+            let strPlay = "You Lose!" + " " + computerSelection + " beats" + " " + playerSelection;
             result += strPlay;
         } else if (computerSelection === "Paper") {
-            let strPlay = "You Win!" + " " + str + " beats" + " " + computerSelection;
+            let strPlay = "You Win!" + " " + playerSelection + " beats" + " " + computerSelection;
             result += strPlay;
         } else if (computerSelection === "Scissors") {
             let strPlay = "Tie!";
@@ -47,36 +45,30 @@ function playRound (playerSelection, computerSelection) {
     return result;
 };
 
-function game() {
-    console.log("Rock, Paper, Scissors! First to score 5 wins!");
-    let player = 0;
-    let computer = 0;
-    let rounds = 1;
-    
-    while (true) {
-        console.log("Round " + rounds.toString() + ":");
-        let roundResult = playRound(prompt("Rock, Paper or Scissors? Enter your play:"), computerPlay());
-        if (roundResult.includes("You Win!")) {
-            console.log(roundResult);
-            player ++;
-            rounds ++;
-        } else if (roundResult.includes("You Lose!")) {
-            console.log(roundResult);
-            computer ++;
-            rounds ++;
-        } else if (roundResult.includes("Tie!")) {
-            console.log(roundResult);
-            rounds ++;
-        }
-        console.log("player: " + player.toString() + " " + "X" + " " + "computer: " + computer.toString());
-        if (player == 5 || computer == 5) {
-            break;
-        }
-    }
+let buttons = document.getElementsByTagName("button");
+let roundWinner = document.getElementById("result");
+let playerScore = document.getElementById("player").children[1];
+let computerScore = document.getElementById("computer").children[1];
 
-    if (player > computer) {
-        console.log("Congratulations! You Win!");
+function clickButton(element) {
+    let winner = playRound(element, computerPlay());
+    if (winner.includes("You Win!")) {
+        let playerInt = parseInt(playerScore.textContent);
+        playerInt ++;
+        playerScore.textContent = playerInt.toString();
+        roundWinner.textContent = winner;
+    } else if (winner.includes("You Lose!")) {
+        let computerInt = parseInt(computerScore.textContent);
+        computerInt ++;
+        computerScore.textContent =computerInt.toString();
+        roundWinner.textContent = winner;
     } else {
-        console.log("Too bad! You Lose!"); 
+        roundWinner.textContent = winner;
     }
-}
+};
+
+for (let i = 0; i < buttons.length; i++) {
+    buttons[i].addEventListener("click", function(){
+        clickButton(buttons[i].className)
+    })
+};
