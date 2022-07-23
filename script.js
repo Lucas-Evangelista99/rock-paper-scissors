@@ -52,16 +52,34 @@ let computerScore = document.getElementById("computer").children[1];
 
 function clickButton(element) {
     let winner = playRound(element, computerPlay());
+    let playerInt = parseInt(playerScore.textContent);
+    let computerInt = parseInt(computerScore.textContent);
     if (winner.includes("You Win!")) {
-        let playerInt = parseInt(playerScore.textContent);
         playerInt ++;
-        playerScore.textContent = playerInt.toString();
-        roundWinner.textContent = winner;
+        if (playerInt == 5) {
+            playerInt = 0;
+            computerInt = 0;
+            playerScore.textContent = playerInt.toString();
+            computerScore.textContent = computerInt.toString();
+            roundWinner.textContent = "Congratulations! You won the game! Wanna play again?";
+        }
+        else { 
+            playerScore.textContent = playerInt.toString();
+            roundWinner.textContent = winner;
+        }
     } else if (winner.includes("You Lose!")) {
-        let computerInt = parseInt(computerScore.textContent);
         computerInt ++;
-        computerScore.textContent =computerInt.toString();
-        roundWinner.textContent = winner;
+        if (computerInt == 5) {
+            playerInt = 0;
+            computerInt = 0;
+            playerScore.textContent = playerInt.toString();
+            computerScore.textContent = computerInt.toString();
+            roundWinner.textContent = "Too bad! You lost the game! How about trying again?";
+        }
+        else { 
+            computerScore.textContent = computerInt.toString();
+            roundWinner.textContent = winner;
+        }
     } else {
         roundWinner.textContent = winner;
     }
