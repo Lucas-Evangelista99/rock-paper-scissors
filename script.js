@@ -1,5 +1,5 @@
 function computerPlay() {
-    const POSSIBLE_PLAYS = ["Rock", "Paper", "Scissors"];
+    const POSSIBLE_PLAYS = ["rock", "paper", "scissors"];
     const randomPlay = POSSIBLE_PLAYS[Math.floor(Math.random() * POSSIBLE_PLAYS.length)];
     return randomPlay;
 };
@@ -7,36 +7,36 @@ function computerPlay() {
 function playRound(playerSelection, computerSelection) {
     let result = "";
     
-    if (playerSelection === "Rock") {
-        if (computerSelection === "Rock") {
+    if (playerSelection === "rock") {
+        if (computerSelection === "rock") {
            let strPlay = "Tie!";
            result += strPlay;
-        } else if (computerSelection === "Paper") {
-            let strPlay = "You Lose!" + " " + computerSelection + " beats" + " " + playerSelection;
+        } else if (computerSelection === "paper") {
+            let strPlay = "You lose this round!" + " " + computerSelection + " beats" + " " + playerSelection;
             result += strPlay;
-        } else if (computerSelection === "Scissors") {
-            let strPlay = "You Win!" + " " + playerSelection + " beats" + " " + computerSelection;
+        } else if (computerSelection === "scissors") {
+            let strPlay = "You win this round!" + " " + playerSelection + " beats" + " " + computerSelection;
             result += strPlay;
         }
-    } else if (playerSelection === "Paper") {
-        if (computerSelection === "Rock") {
-            let strPlay = "You Win!" + " " + playerSelection + " beats" + " " + computerSelection;
+    } else if (playerSelection === "paper") {
+        if (computerSelection === "rock") {
+            let strPlay = "You win this round!" + " " + playerSelection + " beats" + " " + computerSelection;
             result += strPlay;
-        } else if (computerSelection === "Paper") {
+        } else if (computerSelection === "paper") {
             let strPlay = "Tie!";
             result += strPlay;
-        } else if (computerSelection === "Scissors") {
-            let strPlay = "You Lose!" + " " + computerSelection + " beats" + " " + playerSelection;
+        } else if (computerSelection === "scissors") {
+            let strPlay = "You lose this round!" + " " + computerSelection + " beats" + " " + playerSelection;
             result += strPlay;
         }
-    } else if (playerSelection === "Scissors") {
-        if (computerSelection === "Rock") {
-            let strPlay = "You Lose!" + " " + computerSelection + " beats" + " " + playerSelection;
+    } else if (playerSelection === "scissors") {
+        if (computerSelection === "rock") {
+            let strPlay = "You lose this round!" + " " + computerSelection + " beats" + " " + playerSelection;
             result += strPlay;
-        } else if (computerSelection === "Paper") {
-            let strPlay = "You Win!" + " " + playerSelection + " beats" + " " + computerSelection;
+        } else if (computerSelection === "paper") {
+            let strPlay = "You win this round!" + " " + playerSelection + " beats" + " " + computerSelection;
             result += strPlay;
-        } else if (computerSelection === "Scissors") {
+        } else if (computerSelection === "scissors") {
             let strPlay = "Tie!";
             result += strPlay;
         }
@@ -54,7 +54,7 @@ function clickButton(element) {
     let winner = playRound(element, computerPlay());
     let playerInt = parseInt(playerScore.textContent);
     let computerInt = parseInt(computerScore.textContent);
-    if (winner.includes("You Win!")) {
+    if (winner.includes("You win this round!")) {
         playerInt ++;
         if (playerInt == 5) {
             playerInt = 0;
@@ -67,7 +67,7 @@ function clickButton(element) {
             playerScore.textContent = playerInt.toString();
             roundWinner.textContent = winner;
         }
-    } else if (winner.includes("You Lose!")) {
+    } else if (winner.includes("You lose this round!")) {
         computerInt ++;
         if (computerInt == 5) {
             playerInt = 0;
